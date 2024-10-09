@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Author: {{ author.last_name }}, {{ author.first_name }}</h1>
+
+<p>{{ author.date_of_birth }} - {{ author.date_of_death }}</p>
+
+<div style="margin-left:20px;margin-top:20px">
+    <h4>Books</h4>
+
+    {% for single_book in books %}
+    <p> <a href="{{ single_book.get_absolute_url }}">{{ single_book.title }}</a>
+        <strong> ({{ single_book.bookinstance_set.count }}) </strong>
+    </p>
+    <p> {{ single_book.summary}} </p>
+    {% endfor %}
+</div>
+{% endblock %}
